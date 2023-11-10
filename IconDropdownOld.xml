@@ -1,0 +1,159 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+    <Button name="IconDropdownIconButtonTemplate" inherits="UIPanelButtonTemplate" text="" virtual="true">
+        <Size x="80" y="80"/>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT"> <Offset x="0" y="0"/> </Anchor>
+        </Anchors>
+        <NormalTexture file="Interface\Addons\ThatsMyBuff\art\ClassIcon_Druid.blp"/>
+        <Scripts>
+            <OnClick>IconDropdownHandleButtonClick(self);</OnClick>
+        </Scripts>
+    </Button>
+
+    <Button name="IconDropdownButtonTemplate" inherits="IconDropdownIconButtonTemplate" virtual="true" hidden="true">
+
+    </Button>
+
+    <Frame name="IconDropdownTemplate" mixin="IconDropdownMixin" virtual="true" parent="UIParent" hidden="false">
+        <Size x="80" y="80" />
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+                <Offset x="0" y="0" />
+            </Anchor>
+        </Anchors>
+        <Frames>
+            <Button inherits="IconDropdownIconButtonTemplate" name="$parent_mainIcon">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>ToggleDropdownMenu(self);</OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnLoad>IconDropdownInitialize(self);</OnLoad>
+            <OnSizeChanged>IconDropdownResizeElements(self);</OnSizeChanged>
+        </Scripts>
+    </Frame>
+
+     <Frame name="MyFrame" parent="UIParent" hidden="true">
+        <Size x="100" y="15"/>
+        <Anchors>
+        <Anchor point="TOPLEFT">
+            <Offset x="500" y="-300"/>
+        </Anchor>
+        </Anchors>
+        <Frames>
+            <Button inherits="UIPanelButtonTemplate" name="$parent_button1" text="">
+                <Size x="80" y="80"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <NormalTexture file="Interface\Addons\ThatsMyBuff\art\ClassIcon_Druid.blp"/>
+                    <!-- <Texture name="$parent_normtex" file="Interface\\Addons\\MyAceTutorial\\ClassIcon_Druid.blp">
+                        <Size x="80" y="100" />
+                        <Color a="1" r="0" g="1" b="1" />
+                    </Texture>
+                </NormalTexture> -->
+                <!-- <NormalFont style="GameFontNormalHuge"/>
+                <HighlightFont style="GameFontNormalHuge"/> -->
+            </Button>
+            <Button inherits="IconDropdownButtonTemplate" name="$parent_button2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_button1" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+                <NormalTexture file="Interface\Addons\ThatsMyBuff\art\ClassIcon_Rogue.blp"/>
+            </Button>
+
+        </Frames>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture>
+                    <Size x="100" y="100" />
+                    <Color a="1" r="1" g="1" b="1" />
+                </Texture>
+            </Layer>
+            
+            <!-- <Layer level="OVERLAY">
+                <Texture>
+                    <Size x="100" y="100" />
+                    <Color a="1" r="0" g="1" b="1" />
+                </Texture>
+            </Layer> -->
+        </Layers>
+    </Frame>
+
+    <Frame name="MyAddon_Frame" parent="UIParent" hidden="true">
+
+        <Size x="100" y="40"/>
+        <Anchors>
+        <Anchor point="TOPLEFT">
+            <Offset x="20" y="-300"/>
+        </Anchor>
+        </Anchors>
+
+            <!-- <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background"
+                edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                tile="true">
+        <TileSize>
+            <AbsValue val="16"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="16"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="4" right="3" top="4" bottom="3"/>
+        </BackgroundInsets>
+        <Color r="0.2" g="0.2" b="0.2" a="0.7"/>
+        </Backdrop> -->
+
+        <Frames>
+
+            <Button name="$parent_button" text="A Button!">
+                <Size x="100" y="10"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_yString" relativePoint="BOTTOMLEFT">
+                        <Offset x="0" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+        </Frames>
+
+        <Layers>
+            <Layer>
+                <FontString name="$parent_xString"
+                            inherits="SystemFont_Large"
+                            text="x = "
+                            justifyV="TOP"
+                            justifyH="RIGHT">
+
+                    <Size x="0" y="10"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                        <Offset x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="1" g="1" b="0" a="1"/>
+                </FontString>
+                <FontString name="$parent_yString"
+                            inherits="SystemFont_Large"
+                            text="y = "
+                            justifyV="TOP"
+                            justifyH="RIGHT">
+
+                    <Size x="0" y="10"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent_xString" relativePoint="BOTTOMLEFT">
+                        <Offset x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="1" g="1" b="0" a="1"/>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+</Ui>

@@ -1,0 +1,12 @@
+Add "Assign All" column to each paladin
+Add auras to pally
+Add "Auto Assign" method
+Add "Auto Detect" for class detection
+Add "Send Update" button
+Add "Send Whisper" button
+Add pally buffing window
+Add minimap icon
+
+Clean Up
+    Fix text overlap in pally buffs
+    Align shaman totems with center, make bigger

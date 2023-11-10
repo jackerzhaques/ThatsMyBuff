@@ -1,0 +1,229 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+    <Frame
+            name="TMB_MainWidget"
+            inherits="BasicFrameTemplateWithInset"
+            toplevel="true"
+            frameStrata="Dialog"
+            movable="true"
+            resizable="false"
+            enableMouse="true"
+            hidden="true"
+            virtual="true"
+            mixin="TMBMainWidgetMixin"
+            parent="UIParent">
+        
+        <Size x="1300" y="500"/>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+                <Offset x="0" y="0"/>
+            </Anchor>
+        </Anchors>
+
+        <Frames>
+            <!-- Tab Frames -->
+            <Frame name="$parent_tabFrame1" hidden="false">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT" />
+                    <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
+                </Anchors>
+            </Frame>
+            <Frame name="$parent_tabFrame2" hidden="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT"/>
+                    <Anchor point="BOTTOMRIGHT"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString inherits="GameFontNormal" text="My Frame 2">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="$parent">
+                                    <Offset>
+                                        <AbsDimension x="20" y="-30"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <!-- Tab Buttons -->
+            <!-- These must follow the format $parentTab# in order to work properly -->
+            <Button name="$parentTab1" inherits="CharacterFrameTabButtonTemplate" id="1" text="Raid Buffs">
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="60" y="-12"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        TMBTabButtonCallback(self)
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parentTab2" inherits="CharacterFrameTabButtonTemplate" id="2" text="WIP">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="-16" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        TMBTabButtonCallback(self)
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+        </Frames>
+
+        <Scripts>
+            <OnLoad>
+                self:Initialize();
+            </OnLoad>
+            <OnShow>
+                PlaySound("UChatScrollButton")
+                self:SetTab(1);
+            </OnShow>
+            <OnHide>
+                PlaySound("UChatScrollButton")
+            </OnHide>
+            <OnMouseDown>
+                self:StartMoving();
+            </OnMouseDown>
+            <OnMouseUp>
+                self:StopMovingOrSizing();
+            </OnMouseUp>
+        </Scripts>
+    </Frame>
+
+   <Frame
+       name="myTabContainerFrame"
+       inherits="BasicFrameTemplateWithInset"
+       toplevel="true"
+       frameStrata="DIALOG"
+       movable="true"
+       resizable="true"
+       enableMouse="true"
+       hidden="true"
+       parent="UIParent">
+       <Size x="480" y="325"/>
+       <Anchors>
+           <Anchor point="CENTER">
+               <Offset x="-200" y="200"/>
+           </Anchor>
+       </Anchors>
+
+       
+        <Scripts>
+        <OnMouseDown>
+            self:StartMoving();
+        </OnMouseDown>
+        <OnMouseUp>
+            self:StopMovingOrSizing();
+        </OnMouseUp>
+        </Scripts>
+
+       <Layers>
+      <Layer>
+        <FontString name="$parent_xString"
+                    inherits="SystemFont_Small"
+                    text="x = "
+                    justifyV="TOP"
+                    justifyH="RIGHT">
+
+          <Size x="0" y="10"/>
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset x="5" y="-5"/>
+            </Anchor>
+          </Anchors>
+          <Color r="1" g="1" b="0" a="1"/>
+        </FontString>
+        <FontString name="$parent_yString"
+                    inherits="SystemFont_Small"
+                    text="y = "
+                    justifyV="TOP"
+                    justifyH="RIGHT">
+
+          <Size x="0" y="10"/>
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="$parent_xString"
+                    relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+          <Color r="1" g="1" b="0" a="1"/>
+        </FontString>
+        <FontString name="$parent_azimuthString"
+                    inherits="SystemFont_Small"
+                    text="F = "
+                    justifyV="TOP"
+                    justifyH="RIGHT">
+
+          <Size x="0" y="10"/>
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="$parent_yString"
+                    relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+          <Color r="1" g="1" b="0" a="1"/>
+        </FontString>
+        
+
+
+        <FontString name="$parent_xCoorNum"
+                    inherits="SystemFont_Small"
+                    text="0.0"
+                    justifyV="TOP"
+                    justifyH="RIGHT">
+
+          <Size x="0" y="10"/>
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="$parent_xString"
+                    relativePoint="TOPRIGHT">
+              <Offset x="5" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="1" g="1" b="0" a="1"/>
+        </FontString>
+        <FontString name="$parent_yCoorNum"
+                    inherits="SystemFont_Small"
+                    text="0.0"
+                    justifyV="TOP"
+                    justifyH="RIGHT">
+
+          <Size x="0" y="10"/>
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="$parent_xCoorNum"
+                    relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+          <Color r="1" g="1" b="0" a="1"/>
+        </FontString>
+        <FontString name="$parent_azimuthNum"
+                    inherits="SystemFont_Small"
+                    text="0.0"
+                    justifyV="TOP"
+                    justifyH="RIGHT">
+
+          <Size x="0" y="10"/>
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="$parent_yCoorNum"
+                    relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+          <Color r="1" g="1" b="0" a="1"/>
+        </FontString>
+        
+      </Layer>
+    </Layers>
+   </Frame>
+
+
+</Ui>

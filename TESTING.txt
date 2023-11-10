@@ -1,0 +1,20 @@
+Sizing and appearance
+    How does it appear on their screens? Screenshots?
+    Is everything visible? Is anything cutoff
+    Are things too small/large
+    Is the scroll container and bar sized/aligned correctly
+
+Ease of use
+    Is the interface intuitive?
+    Does selecting icons work
+
+Features
+    Does it autodetect group comp succesfully (Shaman/Pally)
+    Does it detect specs correctly
+    Does it set shaman totems correctly
+    Does it pally buff correctly
+    Does the whisper feature work
+
+
+KNOWN BUGS
+    UI doesn't load when no shamans/pallies are present
