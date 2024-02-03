@@ -15,7 +15,7 @@
             mixin="TMBMainWidgetMixin"
             parent="UIParent">
         
-        <Size x="1300" y="500"/>
+        <Size x="300" y="200"/>
         <Anchors>
             <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
                 <Offset x="0" y="0"/>
@@ -24,6 +24,12 @@
 
         <Frames>
             <!-- Tab Frames -->
+            <Frame name="$parent_mainFrame" hidden="false">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT" />
+                    <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
+                </Anchors>
+            </Frame>
             <Frame name="$parent_tabFrame1" hidden="false">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT" />
@@ -51,7 +57,7 @@
             </Frame>
             <!-- Tab Buttons -->
             <!-- These must follow the format $parentTab# in order to work properly -->
-            <Button name="$parentTab1" inherits="CharacterFrameTabButtonTemplate" id="1" text="Raid Buffs">
+            <!-- <Button name="$parentTab1" inherits="CharacterFrameTabButtonTemplate" id="1" text="Raid Buffs">
                 <Anchors>
                     <Anchor point="CENTER" relativePoint="BOTTOMLEFT">
                         <Offset>
@@ -78,7 +84,7 @@
                         TMBTabButtonCallback(self)
                     </OnClick>
                 </Scripts>
-            </Button>
+            </Button> -->
 
         </Frames>
 

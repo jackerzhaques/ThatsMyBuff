@@ -37,6 +37,7 @@ function ShamanWidget:Create(name, parentWidget, relativeWidget)
     playerLabel:SetPoint("TOPLEFT", relativeWidget, "BOTTOMLEFT", 0, -30)
     playerLabel:SetText(name)
     shaman.titleWidget = playerLabel
+    local widgetSpacing = 15
 
     -- EARTH
     local earthDropdown = IconDropdown:Create(nil, parentWidget, 60, 60, self.DropdownOptionClicked)
@@ -56,7 +57,7 @@ function ShamanWidget:Create(name, parentWidget, relativeWidget)
     fireDropdown.shamanName = name
     fireDropdown.totemType = "fire"
     fireDropdown:SetSize(30,30)
-    fireDropdown:SetPoint("LEFT", earthDropdown, "RIGHT", 30, 0)
+    fireDropdown:SetPoint("LEFT", earthDropdown, "RIGHT", widgetSpacing, 0)
     local fireTotems = TotemTableFire
     for totemIdx = 1,#fireTotems do
         local totem = fireTotems[totemIdx]
@@ -69,7 +70,7 @@ function ShamanWidget:Create(name, parentWidget, relativeWidget)
     waterDropdown.shamanName = name
     waterDropdown.totemType = "water"
     waterDropdown:SetSize(30,30)
-    waterDropdown:SetPoint("LEFT", fireDropdown, "RIGHT", 30, 0)
+    waterDropdown:SetPoint("LEFT", fireDropdown, "RIGHT", widgetSpacing, 0)
     local waterTotems = TotemTableWater
     for totemIdx = 1,#waterTotems do
         local totem = waterTotems[totemIdx]
@@ -82,7 +83,7 @@ function ShamanWidget:Create(name, parentWidget, relativeWidget)
     airDropdown.shamanName = name
     airDropdown.totemType = "air"
     airDropdown:SetSize(30,30)
-    airDropdown:SetPoint("LEFT", waterDropdown, "RIGHT", 30, 0)
+    airDropdown:SetPoint("LEFT", waterDropdown, "RIGHT", widgetSpacing, 0)
     local airTotems = TotemTableAir
     for totemIdx = 1,#airTotems do
         local totem = airTotems[totemIdx]

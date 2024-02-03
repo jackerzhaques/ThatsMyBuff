@@ -89,7 +89,7 @@ function PallyBuffs:FetchIcons()
     castFrame:SetSize(200,30)
     castFrame:Show();
     -- castFrame:Button_OnClick()
-    print(castFrame.OnClick)
+    -- print(castFrame.OnClick)
     PallyBuffs.castFrame = castFrame
 
     PlayerTable.aura = AuraDevotion
