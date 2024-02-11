@@ -279,3 +279,4 @@ end
 
 SLASH_SHOW1 = "/show"
 SlashCmdList["SHOW"] = showWidget
+--comment
