@@ -47,17 +47,17 @@ end
 -- Wow API Event Handling
 ------------------------
 local function handleBlizzEvents(self, event, ...)
-    print("event!")
+    -- print("event!")
     if event == "RAID_ROSTER_UPDATE" then
         print("Raid roster update")
     elseif event == "PARTY_LEADER_CHANGED" then
-        print("Party leader changed")
+        -- print("Party leader changed")
     elseif event == "PARTY_MEMBERS_CHANGED" then
-        print("Raid members changed")
+        -- print("Raid members changed")
     elseif event == "PLAYER_STARTED_MOVING" then
-        print("Player started moving")
+        -- print("Player started moving")
     else
-        print("Some other event", event)
+        -- print("Some other event", event)
     end
 end
 

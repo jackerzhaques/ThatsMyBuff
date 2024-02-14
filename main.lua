@@ -264,6 +264,7 @@ function ThatsMyBuff:OnInitialize()
     ------------------------
     CreateBuffWindow()
     Comms:RegisterEvent(BuffUpdateEvent, callbackHandleBuffUpdate)
+    MainWidget:Hide()
     -- print("Done")
 end
 
@@ -277,6 +278,6 @@ local function showWidget()
     end
 end
 
-SLASH_SHOW1 = "/show"
-SlashCmdList["SHOW"] = showWidget
---comment
+-- Show command
+SLASH_TMB1 = "/tmb"
+SlashCmdList["TMB"] = showWidget
